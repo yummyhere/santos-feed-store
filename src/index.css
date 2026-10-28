@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+  --color-barn-green: #263C2D;
+  --color-barn-green-hover: #1E3024;
+  --color-barn-green-deep: #16241B;
+  --color-muted-olive: #697A45;
+  --color-warm-sand: #E9DFC9;
+  --color-natural-cream: #F7F5EF;
+  --color-earth-brown: #79583D;
+  --color-charcoal: #292B27;
+  --color-store-border: #E4E1D8;
+  --color-secondary-text: #595C54;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Lora", Georgia, Cambria, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    background-color: var(--color-natural-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-barn-green);
+    outline-offset: 2px;
+  }
+
+  /* Custom agricultural textured scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F7F5EF;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9D2BF;
+    border-radius: 4px;
+    border: 2px solid #F7F5EF;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #697A45;
+  }
+}
+
+/* Tactile craft details */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.balance-text {
+  text-wrap: balance;
+}
+
+/* California Barn Arched Shapes */
+.arch-hero {
+  border-radius: 80px 80px 14px 14px;
+}
+
+@media (min-width: 768px) {
+  .arch-hero {
+    border-radius: 120px 120px 18px 18px;
+  }
+}
+
+.arch-category {
+  border-radius: 40px 40px 10px 10px;
+}
+
+/* Vintage Feed Sack Stitched Tag Border */
+.stitched-border {
+  border: 1px dashed #697A45;
+  border-radius: 6px;
+}
+
+/* Tactile Kraft Paper Texture */
+.kraft-paper-bg {
+  background-color: #F7F5EF;
+  background-image: radial-gradient(#E4E1D8 0.75px, transparent 0.75px);
+  background-size: 14px 14px;
+}
+
+.wood-counter-bg {
+  background-color: #263C2D;
+  background-image: radial-gradient(rgba(233, 223, 201, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Thermal POS Receipt Tape with Serrated Edge */
+.receipt-serrated {
+  position: relative;
+  background: #FFFDF8;
+}
+
+.receipt-serrated::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: radial-gradient(circle, transparent, transparent 50%, #FFFDF8 50%, #FFFDF8 100%);
+  background-size: 10px 10px;
+  background-position: bottom;
+  transform: rotate(180deg);
+}
+
+/* Stamped Emblem Seal */
+.stamp-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(105, 122, 69, 0.4);
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Ticket notch edge */
+.ticket-edge {
+  position: relative;
+}
+.ticket-edge::before,
+.ticket-edge::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #F7F5EF;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.ticket-edge::before {
+  left: -6px;
+}
+.ticket-edge::after {
+  right: -6px;
+}
+
+/* Animations */
+@keyframes receiptSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-receipt-print {
+  animation: receiptSlideDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scanGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px #263C2D, 0 0 0 3px rgba(38, 60, 45, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 1px #697A45, 0 0 0 4px rgba(105, 122, 69, 0.25);
+  }
+}
+
+.pulse-focus {
+  animation: scanGlow 2.5s infinite ease-in-out;
+}
+
+/* Subtle botanical wheat sway in light breeze */
+@keyframes wheatBreeze {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1.8deg) translateY(-2px);
+  }
+}
+
+@keyframes wheatBreezeReverse {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-1.8deg) translateY(-2px);
+  }
+}
+
+.animate-wheat-breeze {
+  animation: wheatBreeze 7s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-wheat-breeze-slow {
+  animation: wheatBreeze 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-wheat-breeze-rev {
+  animation: wheatBreezeReverse 8.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
